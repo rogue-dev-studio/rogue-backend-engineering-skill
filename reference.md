@@ -2,28 +2,28 @@
 
 ## Layering
 
-| Layer | Tanggung jawab |
+| Layer | Responsibility |
 |-------|----------------|
 | Transport | HTTP/CLI: parse, authorize entry, map response |
-| Application/Service | Use-case, transaksi, orkestrasi |
-| Domain | Aturan bisnis murni bila project memisahkan |
+| Application/Service | Use-case, transactions, orchestration |
+| Domain | Pure business rules when the project separates them |
 | Persistence | Eloquent/Query/Repository |
 
-## Laravel-oriented notes (bila stack Laravel)
+## Laravel-oriented notes (when stack is Laravel)
 
-- Form Request untuk validasi; Policy untuk authz
-- Resource/API Resource untuk shaping response
-- Job + queue untuk kerja async
-- Jangan business rule panjang di Migration/Observer tanpa dokumen
+- Form Request for validation; Policy for authz
+- Resource/API Resource for response shaping
+- Job + queue for async work
+- Do not put long business rules in Migration/Observer without documentation
 
-## Node-oriented notes (bila stack Node)
+## Node-oriented notes (when stack is Node)
 
-- Router tipis; service module; schema validation (Zod/etc. sesuai project)
-- Error middleware terpusat
+- Thin router; service module; schema validation (Zod/etc. per project)
+- Centralized error middleware
 
 ## Anti-patterns
 
-- God service tanpa batas
-- Query di Blade/React via raw SQL string
-- Silent catch yang menelan error
-- Cache tanpa TTL/invalidation
+- God service without bounds
+- Query in Blade/React via raw SQL string
+- Silent catch that swallows errors
+- Cache without TTL/invalidation

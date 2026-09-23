@@ -15,36 +15,36 @@ expertise_level: expert
 
 ## When to use
 
-- Implementasi fitur server: service, policy, job, mail, storage
-- Refactor agar controller tipis; business rules di service/domain
-- Integrasi DB (`database-engineering`) + API (`api-engineering`)
+- Server feature implementation: service, policy, job, mail, storage
+- Refactor to thin controllers; business rules in service/domain
+- DB integration (`database-engineering`) + API (`api-engineering`)
 
 ## When not to use
 
-- Hanya schema/index -> `database-engineering`
-- Hanya kontrak HTTP tanpa logic -> `api-engineering`
-- Hanya UI -> `frontend-engineering`
+- Schema/index only -> `database-engineering`
+- HTTP contract only without logic -> `api-engineering`
+- UI only -> `frontend-engineering`
 
 ## Procedure
 
 1. **Layering** - Controller/handler = transport; Service = use-case; Persistence = repository/ORM.
-2. **Validation** - Di boundary (Form Request / DTO / schema); fail fast.
-3. **Transactions** - Multi-write atomik di service; transaksi pendek.
-4. **Authz** - Policy/gate per aksi; default deny.
-5. **Errors** - Domain exception -> mapping HTTP konsisten; log dengan correlation id bila ada.
-6. **Side-effects** - Queue/job untuk kerja lambat; idempotent consumer.
-7. **Performance** - Eager load; hindari N+1; cache dengan invalidation eksplisit.
-8. **Verify** - Unit/feature test kritis + smoke API; handoff FE jika kontrak berubah.
+2. **Validation** - At boundary (Form Request / DTO / schema); fail fast.
+3. **Transactions** - Atomic multi-write in service; short transactions.
+4. **Authz** - Policy/gate per action; default deny.
+5. **Errors** - Domain exception -> consistent HTTP mapping; log with correlation id when available.
+6. **Side-effects** - Queue/job for slow work; idempotent consumer.
+7. **Performance** - Eager load; avoid N+1; cache with explicit invalidation.
+8. **Verify** - Critical unit/feature tests + API smoke; hand off to FE if contract changes.
 
 Detail: `reference.md`.
 
 ## DoD
 
-- [ ] Layering terjaga (no fat controller / no DB dari UI)
-- [ ] Validasi + authz + transaksi benar
-- [ ] Tidak ada N+1 sadar di path utama
-- [ ] Tes/smoke untuk perilaku kritis
-- [ ] Kontrak API selaras `api-engineering`
+- [ ] Layering maintained (no fat controller / no DB from UI)
+- [ ] Validation + authz + transactions correct
+- [ ] No known N+1 on main paths
+- [ ] Tests/smoke for critical behavior
+- [ ] API contract aligned with `api-engineering`
 
 ## Attribution
 
