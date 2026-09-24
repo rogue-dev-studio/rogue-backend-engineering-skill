@@ -4,7 +4,7 @@
 
 Expert backend application engineering: layered architecture, domain services, validation, transactions, caching boundaries, background jobs, and framework idioms (e.g. Laravel/Node) without leaking business rules into controllers. Use when implementing or refactoring server-side features, services, form requests/DTOs, policies, queues, or integrating persistence with APIs.
 
-- Market: https://rogue-dev-studio.github.io/rogue-market-agent/
+- Asset Store: https://rogue-dev-studio.github.io/rogue-asset-store/
 - Skill id: `backend-engineering`
 
 ## Install
